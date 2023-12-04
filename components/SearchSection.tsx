@@ -45,7 +45,6 @@ const SearchSection = () => {
     } catch (error) {
       console.error(error)
     }
-    console.log('Selected cuisine:', selectedCuisine)
   }
 
   return (

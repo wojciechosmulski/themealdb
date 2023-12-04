@@ -16,7 +16,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main className="flex min-h-screen flex-col items-center  p-24">
+          <h1 className="font-bold text-3xl pb-3">
+            TheMealDB API
+          </h1>
+          <div className="flex gap-3">{children}</div>
+        </main>
+      </body>
     </html>
   )
 }

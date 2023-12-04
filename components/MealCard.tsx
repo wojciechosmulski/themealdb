@@ -1,16 +1,22 @@
 import React from 'react'
 import Image from 'next/image'
 import { Meal } from '@/app/types/meal'
+import { useRouter } from 'next/navigation'
 
 type MealCardProps = {
   meal: Meal
 }
 
 const MealCard = ({ meal }: MealCardProps) => {
+  const router = useRouter()
+  const handleClick = () => {
+    router.push(`/meal/${meal.idMeal}`)
+  }
   return (
     <div
       key={meal.idMeal}
       className="relative flex flex-col items-center justify-center  transition-all duration-500 ease-in-out rounded-md hover:scale-110"
+      onClick={handleClick}
     >
       <Image
         src={meal.strMealThumb}
