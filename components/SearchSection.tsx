@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import SearchBar from '@/components/SearchBar'
 import ComboBox from '@/components/ComboBox'
@@ -12,10 +12,6 @@ const SearchSection = () => {
   >(null)
 
   const handleSearch = async (searchQuery: string) => {
-    if (!searchQuery) {
-      setSearchResults(null)
-      return
-    }
     try {
       const response = await axios.get(
         `https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(
@@ -46,6 +42,10 @@ const SearchSection = () => {
       console.error(error)
     }
   }
+
+  useEffect(() => {
+    handleSearch('')
+  }, [])
 
   return (
     <div className="flex flex-col gap-4 mx-auto w-full justify-center items-center">
